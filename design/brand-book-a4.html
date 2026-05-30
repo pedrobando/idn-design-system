@@ -1,0 +1,202 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<title>Innovative Dynamic Networks — Brand Book</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cabin:wght@400;500;600;700&family=Roboto+Slab:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --primary:   #377fbf;
+    --secondary: #26629c;
+    --tertiary:  #223645;
+    --ink:       #152938;
+    --mist:      #b5c5d0;
+    --gray:      #7a7a7a;
+    --cloud:     #f6f6f6;
+    --line:      #e3e8ec;
+    --bg:        #ffffff;
+    --display: 'Cabin', sans-serif;
+    --slab:    'Roboto Slab', serif;
+  }
+  @page { size: A4; margin: 0; }
+  html, body { margin: 0; padding: 0; background: #d9dde1; }
+  * { box-sizing: border-box; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+
+  .page {
+    width: 210mm; height: 297mm; background: var(--bg); color: var(--tertiary);
+    font-family: var(--display); padding: 15mm 15mm 12mm;
+    display: flex; flex-direction: column; gap: 7.5mm;
+    position: relative; overflow: hidden; margin: 0 auto;
+  }
+  .page::before {
+    content:""; position:absolute; top:0; right:0; width:90mm; height:55mm;
+    background: radial-gradient(120mm 80mm at 100% 0%, rgba(55,127,191,0.14), transparent 65%);
+    pointer-events:none;
+  }
+
+  .label { font-family: var(--slab); font-size: 8.5px; letter-spacing: 2px; color: var(--primary); text-transform: uppercase; font-weight: 500; margin-bottom: 3mm; }
+
+  /* HEAD */
+  .head { display: flex; align-items: flex-start; justify-content: space-between; gap: 10mm; }
+  .head img { height: 15mm; display: block; }
+  .head .sub { margin: 2.5mm 0 0; font-family: var(--slab); font-size: 8px; letter-spacing: 1.5px; text-transform: uppercase; color: var(--gray); }
+  .head-meta { text-align: right; font-family: var(--slab); font-size: 8px; letter-spacing: 1px; color: var(--gray); text-transform: uppercase; line-height: 1.7; }
+  .head-meta .tag { color: var(--primary); font-weight: 700; text-transform: none; font-size: 9px; }
+
+  /* COLORS */
+  .colors { display: grid; grid-template-columns: repeat(3, 1fr); gap: 5mm; }
+  .swatch { border: 1px solid var(--line); border-radius: 7px; overflow: hidden; }
+  .swatch .fill { height: 22mm; }
+  .swatch .meta { padding: 2.5mm 3mm 3mm; background: #fff; }
+  .swatch .tier { font-size: 11px; font-weight: 700; display: block; }
+  .swatch .hex { font-family: var(--slab); font-size: 9px; color: var(--gray); display: block; margin-top: 1mm; text-transform: uppercase; }
+  .swatch .use { font-size: 8.5px; color: var(--gray); line-height: 1.35; margin-top: 1.8mm; display: block; }
+
+  /* TWO COLUMN */
+  .twocol { display: grid; grid-template-columns: 1.15fr 1fr; gap: 6mm; }
+  .card { border: 1px solid var(--line); border-radius: 7px; padding: 4.5mm 5mm; background: #fff; }
+  .type-d { font-size: 23px; font-weight: 700; letter-spacing: -0.02em; color: var(--ink); line-height: 1; margin: 0; }
+  .type-d .pri { color: var(--primary); }
+  .type-h { font-size: 13px; font-weight: 600; color: var(--tertiary); margin: 2.5mm 0 0; }
+  .type-b { font-size: 9px; color: var(--gray); line-height: 1.5; margin: 2.5mm 0 0; }
+  .type-l { font-family: var(--slab); font-size: 8px; color: var(--secondary); letter-spacing: 1px; text-transform: uppercase; margin-top: 3mm; display: block; }
+  .wts { display: flex; gap: 4mm; margin-top: 3.5mm; }
+  .wts span { font-size: 8px; font-family: var(--slab); color: var(--gray); }
+  .wts b { display:block; font-size: 18px; color: var(--ink); font-family: var(--display); line-height:1; margin-bottom:1mm; }
+
+  .principles ul { margin: 0; padding: 0; list-style: none; }
+  .principles li { font-size: 9.5px; color: var(--tertiary); line-height: 1.3; padding: 1.6mm 0; display: flex; gap: 2.5mm; align-items: baseline; }
+  .principles li:not(:last-child) { border-bottom: 1px dashed var(--line); }
+  .principles li b { color: var(--ink); font-weight: 700; }
+  .principles li .n { font-family: var(--slab); font-size: 8px; color: var(--primary); font-weight: 700; flex: none; }
+  .principles li .d { color: var(--gray); font-size: 8.5px; }
+
+  /* STAT ROW */
+  .stats { display: grid; grid-template-columns: repeat(4, 1fr); gap: 4mm; }
+  .stat { border: 1px solid var(--line); border-radius: 7px; padding: 3.5mm 3mm; background: var(--cloud); text-align: center; }
+  .stat b { display: block; font-size: 20px; color: var(--primary); font-weight: 700; line-height: 1; }
+  .stat span { font-family: var(--slab); font-size: 7.5px; letter-spacing: 0.8px; text-transform: uppercase; color: var(--gray); margin-top: 1.5mm; display: block; }
+
+  /* WORDMARKS */
+  .wordmarks { display: grid; grid-template-columns: repeat(3, 1fr); gap: 5mm; }
+  .wm { border: 1px solid var(--line); border-radius: 7px; padding: 4.5mm; background: #fff; min-height: 22mm; display: flex; flex-direction: column; justify-content: center; }
+  .wm.dark { background: var(--tertiary); border-color: var(--tertiary); }
+  .wm .lockup { display: flex; align-items: center; gap: 6px; flex: 1; }
+  .wm img { height: 8mm; }
+  .wm .word { font-weight: 700; font-size: 15px; letter-spacing: 2.5px; text-transform: uppercase; color: var(--ink); }
+  .wm.dark .word { color: #fff; }
+  .wm .word .lo { font-weight: 400; font-size: 9px; letter-spacing: 1.5px; color: var(--mist); }
+  .wm .mono { font-family: var(--slab); font-size: 7.5px; letter-spacing: 1px; text-transform: uppercase; color: var(--gray); margin-top: 3mm; }
+  .wm.dark .mono { color: var(--mist); }
+
+  /* ICONS */
+  .iconrow { display: grid; grid-template-columns: repeat(6, 1fr); gap: 4mm; }
+  .ic { border: 1px solid var(--line); border-radius: 7px; padding: 3.5mm 2mm; background: var(--cloud); text-align: center; }
+  .ic svg { width: 8mm; height: 8mm; stroke: var(--secondary); fill: none; stroke-width: 1.6; stroke-linecap: round; stroke-linejoin: round; }
+  .ic .nm { display: block; margin-top: 2mm; font-family: var(--slab); font-size: 7.5px; letter-spacing: 0.8px; text-transform: uppercase; color: var(--gray); }
+
+  .foot { display: flex; justify-content: space-between; align-items: flex-end; margin-top: auto; padding-top: 3mm; border-top: 1px solid var(--line); font-family: var(--slab); font-size: 7.5px; color: var(--gray); letter-spacing: 1px; text-transform: uppercase; }
+  .foot b { color: var(--secondary); }
+</style>
+</head>
+<body>
+<div class="page">
+
+  <!-- HEAD -->
+  <div class="head">
+    <div>
+      <img src="idn-logo.png" alt="Innovative Dynamic Networks logo" />
+      <p class="sub">Veteran-Owned Managed IT · Milwaukee &amp; Chicago</p>
+    </div>
+    <div class="head-meta">
+      Brand Book · v1.0 · May 2026<br/>
+      <span class="tag">We Manage Your IT,<br/>So You Can Manage Your Business</span>
+    </div>
+  </div>
+
+  <!-- COLORS -->
+  <div>
+    <div class="label">Color Hierarchy</div>
+    <div class="colors">
+      <div class="swatch"><div class="fill" style="background:#377fbf"></div><div class="meta"><span class="tier" style="color:#377fbf">IDN Blue</span><span class="hex">#377FBF</span><span class="use">Primary — links, buttons, the logo mark, key highlights.</span></div></div>
+      <div class="swatch"><div class="fill" style="background:#26629c"></div><div class="meta"><span class="tier" style="color:#26629c">Deep Blue</span><span class="hex">#26629C</span><span class="use">Secondary — hover states, gradients, dimensional depth.</span></div></div>
+      <div class="swatch"><div class="fill" style="background:#223645"></div><div class="meta"><span class="tier" style="color:#223645">Slate Navy</span><span class="hex">#223645</span><span class="use">Tertiary — headings, body text, dark surfaces.</span></div></div>
+    </div>
+  </div>
+
+  <!-- TYPOGRAPHY + PRINCIPLES -->
+  <div class="twocol">
+    <div>
+      <div class="label">Typography</div>
+      <div class="card">
+        <p class="type-d">Managed IT,<br/><span class="pri">simplified.</span></p>
+        <p class="type-h">Cabin · humanist sans</p>
+        <p class="type-b">Cabin carries display and body across the brand — calm, professional, approachable. Roboto Slab handles overlines and labels.</p>
+        <div class="wts">
+          <span><b style="font-weight:400">Aa</b>Reg</span>
+          <span><b style="font-weight:500">Aa</b>Med</span>
+          <span><b style="font-weight:600">Aa</b>SemiB</span>
+          <span><b style="font-weight:700">Aa</b>Bold</span>
+        </div>
+        <span class="type-l">Roboto Slab · Labels · Codes</span>
+      </div>
+    </div>
+    <div>
+      <div class="label">Principles</div>
+      <div class="card principles">
+        <ul>
+          <li><span class="n">01</span><span><b>Reliability</b> <span class="d">— proactive IT that prevents problems.</span></span></li>
+          <li><span class="n">02</span><span><b>Problem Solving</b> <span class="d">— 35+ yrs combined experience.</span></span></li>
+          <li><span class="n">03</span><span><b>One-Stop Shop</b> <span class="d">— full stack, one team.</span></span></li>
+          <li><span class="n">04</span><span><b>Proven Quality</b> <span class="d">— 1000+ businesses, 20+ yrs.</span></span></li>
+          <li><span class="n">05</span><span><b>Technical Expertise</b> <span class="d">— certified professionals.</span></span></li>
+          <li><span class="n">06</span><span><b>Competitive Pricing</b> <span class="d">— scalable to fit the business.</span></span></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- STATS -->
+  <div>
+    <div class="label">By the Numbers</div>
+    <div class="stats">
+      <div class="stat"><b>20+</b><span>Years Serving</span></div>
+      <div class="stat"><b>1000+</b><span>Businesses</span></div>
+      <div class="stat"><b>35+</b><span>Yrs Experience</span></div>
+      <div class="stat"><b>2</b><span>Metro Areas</span></div>
+    </div>
+  </div>
+
+  <!-- ICONOGRAPHY -->
+  <div>
+    <div class="label">Icon Language · 1.6px line · rounded joins</div>
+    <div class="iconrow">
+      <div class="ic"><svg viewBox="0 0 24 24"><path d="M12 3l7 3v5c0 4.4-3 8-7 10-4-2-7-5.6-7-10V6z"/><path d="M9 12l2 2 4-4"/></svg><span class="nm">Security</span></div>
+      <div class="ic"><svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="6" rx="1.5"/><rect x="3" y="14" width="18" height="6" rx="1.5"/><path d="M7 7h.01M7 17h.01"/></svg><span class="nm">Servers</span></div>
+      <div class="ic"><svg viewBox="0 0 24 24"><path d="M7 18a4 4 0 010-8 5.5 5.5 0 0110.6-1.4A4 4 0 0117 18z"/></svg><span class="nm">Cloud</span></div>
+      <div class="ic"><svg viewBox="0 0 24 24"><circle cx="6" cy="6" r="2.2"/><circle cx="18" cy="6" r="2.2"/><circle cx="12" cy="18" r="2.2"/><path d="M7.6 7.6L11 16M16.4 7.6L13 16M8 6h8"/></svg><span class="nm">Network</span></div>
+      <div class="ic"><svg viewBox="0 0 24 24"><path d="M4 12a8 8 0 0116 0"/><rect x="3" y="12" width="3.5" height="6" rx="1.2"/><rect x="17.5" y="12" width="3.5" height="6" rx="1.2"/><path d="M19 18v1a3 3 0 01-3 3h-3"/></svg><span class="nm">Support</span></div>
+      <div class="ic"><svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="13" rx="1.5"/><path d="M8 20h8M12 17v3"/></svg><span class="nm">Workplace</span></div>
+    </div>
+  </div>
+
+  <!-- WORDMARKS -->
+  <div>
+    <div class="label">Wordmarks · Lockups</div>
+    <div class="wordmarks">
+      <div class="wm"><div class="lockup"><img src="idn-logo.png" alt="IDN logo"/></div><span class="mono">Primary · full color</span></div>
+      <div class="wm"><div class="lockup"><span class="word">IDN</span></div><span class="mono">Monogram · navy</span></div>
+      <div class="wm dark"><div class="lockup"><span class="word">IDN<span class="lo"> Networks</span></span></div><span class="mono">Reversed · on navy</span></div>
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <div class="foot">
+    <span>Innovative Dynamic Networks · <b>Design System v1.0</b></span>
+    <span>design/brand-book-a4.pdf</span>
+  </div>
+</div>
+</body>
+</html>

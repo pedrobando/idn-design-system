@@ -1,0 +1,368 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Innovative Dynamic Networks — Design System</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cabin:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600&family=Roboto+Slab:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --primary:    #377fbf;   /* IDN blue */
+    --secondary:  #26629c;   /* deep blue */
+    --tertiary:   #223645;   /* slate navy */
+    --ink:        #152938;   /* darkest navy */
+    --mist:       #b5c5d0;   /* light blue-gray */
+    --gray:       #7a7a7a;
+    --cloud:      #f6f6f6;
+    --line:       #e3e8ec;
+    --white:      #ffffff;
+
+    --bg:      var(--white);
+    --surface: var(--cloud);
+    --text:    var(--tertiary);
+    --muted:   var(--gray);
+
+    --display: 'Cabin', -apple-system, system-ui, sans-serif;
+    --slab:    'Roboto Slab', Georgia, serif;
+    --radius:  10px;
+  }
+
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    margin: 0; background: var(--bg); color: var(--text);
+    font-family: var(--display); line-height: 1.5;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  .wrap { max-width: 1080px; margin: 0 auto; padding: 0 32px; }
+
+  /* ---- HEADER ---- */
+  header {
+    background:
+      radial-gradient(1100px 420px at 100% -10%, rgba(55,127,191,0.16), transparent 60%),
+      linear-gradient(180deg, var(--white), var(--cloud));
+    border-bottom: 1px solid var(--line);
+  }
+  .head-inner { padding: 56px 0 48px; display: flex; flex-direction: column; gap: 28px; }
+  .lockup img { height: 56px; display: block; }
+  .head-grid { display: flex; align-items: flex-end; justify-content: space-between; flex-wrap: wrap; gap: 24px; }
+  .head-grid h1 { margin: 0; font-size: 34px; font-weight: 700; letter-spacing: -0.02em; color: var(--ink); line-height: 1.1; }
+  .head-grid h1 .accent { color: var(--primary); }
+  .head-grid .tagline { margin: 10px 0 0; font-size: 17px; color: var(--secondary); font-weight: 500; }
+  .head-meta { text-align: right; font-family: var(--slab); font-size: 11px; letter-spacing: 1px; color: var(--muted); text-transform: uppercase; line-height: 1.7; }
+  .head-meta b { color: var(--primary); font-weight: 700; }
+
+  /* ---- SECTION SCAFFOLD ---- */
+  section { padding: 60px 0; border-bottom: 1px solid var(--line); }
+  .label {
+    font-family: var(--slab); font-size: 11px; letter-spacing: 2.5px;
+    color: var(--primary); text-transform: uppercase; font-weight: 500; margin: 0 0 6px;
+  }
+  .sec-title { margin: 0 0 28px; font-size: 24px; font-weight: 700; letter-spacing: -0.01em; color: var(--ink); }
+  .sec-lead { margin: -18px 0 28px; max-width: 60ch; color: var(--muted); font-size: 15px; }
+
+  /* ---- COLOR HIERARCHY ---- */
+  .colors { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+  .swatch { border: 1px solid var(--line); border-radius: var(--radius); overflow: hidden; background: var(--white); box-shadow: 0 1px 2px rgba(21,41,56,0.04); }
+  .swatch .fill { height: 120px; display: flex; align-items: flex-end; padding: 12px; }
+  .swatch .fill span { font-family: var(--slab); font-size: 11px; letter-spacing: 1px; text-transform: uppercase; opacity: 0.85; }
+  .swatch .meta { padding: 14px 16px 16px; }
+  .swatch .tier { font-size: 15px; font-weight: 700; display: block; }
+  .swatch .hex { font-family: var(--slab); font-size: 13px; color: var(--muted); display: block; margin-top: 2px; text-transform: uppercase; }
+  .swatch .use { font-size: 13px; color: var(--muted); line-height: 1.45; margin-top: 8px; display: block; }
+
+  /* ---- EXTENDED PALETTE ---- */
+  .palette { display: grid; grid-template-columns: repeat(6, 1fr); gap: 12px; margin-top: 24px; }
+  .chip { border: 1px solid var(--line); border-radius: 8px; overflow: hidden; background: var(--white); }
+  .chip .fill { height: 64px; }
+  .chip .meta { padding: 8px 10px 10px; }
+  .chip .nm { font-size: 12px; font-weight: 600; display: block; }
+  .chip .hx { font-family: var(--slab); font-size: 10.5px; color: var(--muted); text-transform: uppercase; }
+
+  /* ---- TYPOGRAPHY ---- */
+  .type-card { border: 1px solid var(--line); border-radius: var(--radius); padding: 32px; background: var(--white); }
+  .type-row { display: flex; align-items: baseline; gap: 16px; padding: 16px 0; border-bottom: 1px dashed var(--line); flex-wrap: wrap; }
+  .type-row:last-child { border-bottom: 0; padding-bottom: 0; }
+  .type-row .tag { font-family: var(--slab); font-size: 10px; letter-spacing: 1.5px; text-transform: uppercase; color: var(--muted); width: 110px; flex: none; }
+  .d1 { font-size: 46px; font-weight: 700; letter-spacing: -0.025em; color: var(--ink); line-height: 1; }
+  .d2 { font-size: 28px; font-weight: 600; letter-spacing: -0.015em; color: var(--tertiary); }
+  .body-sample { font-size: 16px; color: var(--tertiary); max-width: 56ch; }
+  .slab-sample { font-family: var(--slab); font-size: 14px; letter-spacing: 1px; color: var(--secondary); text-transform: uppercase; }
+  .weights { display: flex; gap: 26px; flex-wrap: wrap; margin-top: 28px; }
+  .weights div { text-align: center; }
+  .weights .g { font-size: 34px; color: var(--ink); line-height: 1; }
+  .weights .l { font-family: var(--slab); font-size: 10px; letter-spacing: 1px; text-transform: uppercase; color: var(--muted); margin-top: 8px; }
+  .fontnote { margin-top: 22px; font-size: 13px; color: var(--muted); }
+  .fontnote b { color: var(--primary); }
+
+  /* ---- PRINCIPLES ---- */
+  .principles { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; }
+  .pcard { border: 1px solid var(--line); border-radius: var(--radius); padding: 24px; background: var(--white); transition: box-shadow .2s, transform .2s; }
+  .pcard:hover { box-shadow: 0 8px 24px rgba(38,98,156,0.10); transform: translateY(-2px); }
+  .pcard .num { font-family: var(--slab); font-size: 12px; color: var(--primary); font-weight: 700; }
+  .pcard h3 { margin: 8px 0 6px; font-size: 18px; font-weight: 700; color: var(--ink); }
+  .pcard p { margin: 0; font-size: 13.5px; color: var(--muted); line-height: 1.5; }
+
+  /* ---- COMPONENTS ---- */
+  .comp-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
+  .panel { border: 1px solid var(--line); border-radius: var(--radius); padding: 28px; background: var(--white); }
+  .panel h4 { margin: 0 0 18px; font-family: var(--slab); font-size: 11px; letter-spacing: 1.5px; text-transform: uppercase; color: var(--muted); font-weight: 500; }
+  .btn { font-family: var(--display); font-size: 14px; font-weight: 600; border-radius: 6px; padding: 12px 22px; border: 1px solid transparent; cursor: pointer; display: inline-flex; align-items: center; gap: 8px; }
+  .btn-primary { background: var(--primary); color: #fff; }
+  .btn-primary:hover { background: var(--secondary); }
+  .btn-dark { background: var(--tertiary); color: #fff; }
+  .btn-ghost { background: transparent; color: var(--secondary); border-color: var(--mist); }
+  .btn-ghost:hover { border-color: var(--primary); color: var(--primary); }
+  .btn-row { display: flex; gap: 12px; flex-wrap: wrap; align-items: center; }
+  .badges { display: flex; gap: 10px; flex-wrap: wrap; margin-top: 22px; }
+  .badge { font-family: var(--slab); font-size: 11px; letter-spacing: 0.5px; padding: 5px 12px; border-radius: 999px; font-weight: 500; }
+  .b-primary { background: rgba(55,127,191,0.12); color: var(--secondary); }
+  .b-navy { background: var(--tertiary); color: #fff; }
+  .b-outline { border: 1px solid var(--mist); color: var(--secondary); }
+
+  .feature-card { border: 1px solid var(--line); border-radius: var(--radius); overflow: hidden; background: var(--white); }
+  .feature-card .top { height: 6px; background: linear-gradient(90deg, var(--primary), var(--secondary)); }
+  .feature-card .body { padding: 24px; }
+  .feature-card .ico { width: 46px; height: 46px; border-radius: 10px; background: rgba(55,127,191,0.10); display: flex; align-items: center; justify-content: center; margin-bottom: 16px; }
+  .feature-card h3 { margin: 0 0 6px; font-size: 18px; color: var(--ink); }
+  .feature-card p { margin: 0 0 16px; font-size: 13.5px; color: var(--muted); }
+  .feature-card .stat { display: flex; gap: 24px; border-top: 1px solid var(--line); padding-top: 16px; }
+  .feature-card .stat b { display: block; font-size: 22px; color: var(--primary); font-weight: 700; line-height: 1; }
+  .feature-card .stat span { font-family: var(--slab); font-size: 10px; text-transform: uppercase; letter-spacing: 1px; color: var(--muted); }
+
+  /* ---- ICONS ---- */
+  .icons { display: grid; grid-template-columns: repeat(6, 1fr); gap: 16px; }
+  .iconcell { border: 1px solid var(--line); border-radius: var(--radius); padding: 22px 12px; background: var(--white); text-align: center; }
+  .iconcell svg { width: 34px; height: 34px; stroke: var(--secondary); fill: none; stroke-width: 1.6; stroke-linecap: round; stroke-linejoin: round; }
+  .iconcell .nm { display: block; margin-top: 12px; font-family: var(--slab); font-size: 10px; letter-spacing: 1px; text-transform: uppercase; color: var(--muted); }
+
+  /* ---- WORDMARKS ---- */
+  .wordmarks { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+  .wm { border: 1px solid var(--line); border-radius: var(--radius); padding: 30px 26px; background: var(--white); min-height: 150px; display: flex; flex-direction: column; }
+  .wm.dark { background: var(--tertiary); border-color: var(--tertiary); }
+  .wm .lockup { display: flex; align-items: center; gap: 12px; flex: 1; }
+  .wm .word { font-weight: 700; font-size: 22px; letter-spacing: 3px; text-transform: uppercase; color: var(--ink); }
+  .wm .word .lo { font-weight: 400; color: var(--gray); }
+  .wm.dark .word { color: #fff; }
+  .wm .word .pri { color: var(--primary); }
+  .wm .mono { font-family: var(--slab); font-size: 10px; letter-spacing: 1.5px; text-transform: uppercase; color: var(--muted); margin-top: 18px; }
+  .wm.dark .mono { color: var(--mist); }
+  .dot-mark { width: 30px; height: 30px; border-radius: 50%; background: var(--primary); flex: none; position: relative; }
+  .dot-mark::after { content:""; position:absolute; left:50%; top:54%; width:12px; height:18px; transform: translate(-50%,-50%) skewX(-12deg); background: var(--secondary); border-radius: 0 60% 0 60%; }
+
+  /* ---- FOOTER ---- */
+  footer { padding: 40px 0 60px; }
+  .foot-inner { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 16px; font-family: var(--slab); font-size: 11px; letter-spacing: 1px; text-transform: uppercase; color: var(--muted); }
+  .foot-inner b { color: var(--secondary); }
+
+  @media (max-width: 760px) {
+    .colors, .principles, .comp-grid, .wordmarks { grid-template-columns: 1fr; }
+    .palette, .icons { grid-template-columns: repeat(3, 1fr); }
+    .head-grid h1 { font-size: 26px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ============ HEADER ============ -->
+<header>
+  <div class="wrap head-inner">
+    <div class="lockup"><img src="idn-logo.png" alt="Innovative Dynamic Networks logo" /></div>
+    <div class="head-grid">
+      <div>
+        <h1>Innovative Dynamic <span class="accent">Networks</span><br/>Design System</h1>
+        <p class="tagline">We Manage Your IT, So You Can Manage Your Business</p>
+      </div>
+      <div class="head-meta">
+        Version 1.0 · May 2026<br/>
+        <b>Veteran-Owned Managed IT</b><br/>
+        Milwaukee &amp; Chicago · 20+ Years
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- ============ COLOR HIERARCHY ============ -->
+<section>
+  <div class="wrap">
+    <p class="label">01 — Color</p>
+    <h2 class="sec-title">Color Hierarchy</h2>
+    <p class="sec-lead">A blue-forward system drawn straight from the IDN mark — bright signal blue for action, deep blue for depth, slate navy for authority.</p>
+    <div class="colors">
+      <div class="swatch">
+        <div class="fill" style="background:#377fbf;color:#fff"><span>Primary</span></div>
+        <div class="meta"><span class="tier" style="color:#377fbf">IDN Blue</span><span class="hex">#377FBF</span><span class="use">Primary action color — links, buttons, the logo mark, key highlights and data points.</span></div>
+      </div>
+      <div class="swatch">
+        <div class="fill" style="background:#26629c;color:#fff"><span>Secondary</span></div>
+        <div class="meta"><span class="tier" style="color:#26629c">Deep Blue</span><span class="hex">#26629C</span><span class="use">Hover states, gradients, and depth. Pairs under IDN Blue for dimensional surfaces.</span></div>
+      </div>
+      <div class="swatch">
+        <div class="fill" style="background:#223645;color:#fff"><span>Tertiary</span></div>
+        <div class="meta"><span class="tier" style="color:#223645">Slate Navy</span><span class="hex">#223645</span><span class="use">Headings, body text, and dark surfaces. The brand's anchor of stability and trust.</span></div>
+      </div>
+    </div>
+
+    <p class="label" style="margin-top:40px">Extended Palette</p>
+    <div class="palette">
+      <div class="chip"><div class="fill" style="background:#152938"></div><div class="meta"><span class="nm">Ink</span><span class="hx">#152938</span></div></div>
+      <div class="chip"><div class="fill" style="background:#377fbf"></div><div class="meta"><span class="nm">IDN Blue</span><span class="hx">#377FBF</span></div></div>
+      <div class="chip"><div class="fill" style="background:#b5c5d0"></div><div class="meta"><span class="nm">Mist</span><span class="hx">#B5C5D0</span></div></div>
+      <div class="chip"><div class="fill" style="background:#7a7a7a"></div><div class="meta"><span class="nm">Gray</span><span class="hx">#7A7A7A</span></div></div>
+      <div class="chip"><div class="fill" style="background:#f6f6f6;border-bottom:1px solid #e3e8ec"></div><div class="meta"><span class="nm">Cloud</span><span class="hx">#F6F6F6</span></div></div>
+      <div class="chip"><div class="fill" style="background:#ffffff;border-bottom:1px solid #e3e8ec"></div><div class="meta"><span class="nm">White</span><span class="hx">#FFFFFF</span></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ TYPOGRAPHY ============ -->
+<section>
+  <div class="wrap">
+    <p class="label">02 — Typography</p>
+    <h2 class="sec-title">Typography</h2>
+    <p class="sec-lead">Cabin carries the entire brand — a humanist sans with a calm, professional warmth. Roboto Slab handles technical labels, codes, and overlines.</p>
+    <div class="type-card">
+      <div class="type-row"><span class="tag">Display / Cabin 700</span><span class="d1">Managed IT, simplified.</span></div>
+      <div class="type-row"><span class="tag">Heading / Cabin 600</span><span class="d2">Proactive support for growing businesses</span></div>
+      <div class="type-row"><span class="tag">Body / Cabin 400</span><p class="body-sample" style="margin:0">For 20+ years, Innovative Dynamic Networks has kept Milwaukee and Chicago businesses running — proactive monitoring, certified expertise, and a single team accountable for your whole stack.</p></div>
+      <div class="type-row"><span class="tag">Label / Roboto Slab</span><span class="slab-sample">Certified · Reliable · One-Stop Shop</span></div>
+      <div class="weights">
+        <div><div class="g" style="font-weight:400">Aa</div><div class="l">Regular 400</div></div>
+        <div><div class="g" style="font-weight:500">Aa</div><div class="l">Medium 500</div></div>
+        <div><div class="g" style="font-weight:600">Aa</div><div class="l">SemiBold 600</div></div>
+        <div><div class="g" style="font-weight:700">Aa</div><div class="l">Bold 700</div></div>
+      </div>
+      <p class="fontnote"><b>Cabin</b> — display &amp; body. <b>Roboto Slab</b> — overlines, labels, and numeric callouts. Both load free via Google Fonts.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ============ PRINCIPLES ============ -->
+<section>
+  <div class="wrap">
+    <p class="label">03 — Principles</p>
+    <h2 class="sec-title">Brand Principles</h2>
+    <p class="sec-lead">The six commitments IDN makes to every client — the voice and values behind the visual system.</p>
+    <div class="principles">
+      <div class="pcard"><span class="num">01</span><h3>Reliability</h3><p>Proactive managed IT that prevents problems before they disrupt the business.</p></div>
+      <div class="pcard"><span class="num">02</span><h3>Problem Solving</h3><p>35+ years of combined experience standing behind every fix and recommendation.</p></div>
+      <div class="pcard"><span class="num">03</span><h3>One-Stop Shop</h3><p>Comprehensive IT solutions under one roof — one team accountable for the whole stack.</p></div>
+      <div class="pcard"><span class="num">04</span><h3>Proven Quality</h3><p>20+ years serving 1000+ businesses across the Milwaukee and Chicago area.</p></div>
+      <div class="pcard"><span class="num">05</span><h3>Technical Expertise</h3><p>Certified professionals across networking, cloud, security, and support.</p></div>
+      <div class="pcard"><span class="num">06</span><h3>Competitive Pricing</h3><p>Scalable solutions sized and priced to fit the business — not the other way around.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ COMPONENTS ============ -->
+<section>
+  <div class="wrap">
+    <p class="label">04 — Components</p>
+    <h2 class="sec-title">Components</h2>
+    <p class="sec-lead">Buttons, badges, and cards in the IDN language — soft 6px radii, blue-to-navy gradients, and generous breathing room.</p>
+    <div class="comp-grid">
+      <div class="panel">
+        <h4>Buttons</h4>
+        <div class="btn-row">
+          <button class="btn btn-primary">Get a Free Assessment</button>
+          <button class="btn btn-dark">Contact Support</button>
+          <button class="btn btn-ghost">Learn More</button>
+        </div>
+        <h4 style="margin-top:28px">Badges</h4>
+        <div class="badges">
+          <span class="badge b-primary">Managed IT</span>
+          <span class="badge b-navy">Veteran-Owned</span>
+          <span class="badge b-outline">20+ Years</span>
+          <span class="badge b-primary">Certified</span>
+        </div>
+      </div>
+      <div class="feature-card">
+        <div class="top"></div>
+        <div class="body">
+          <div class="ico">
+            <svg viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="#377fbf" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l7 3v5c0 4.4-3 8-7 10-4-2-7-5.6-7-10V6z"/><path d="M9 12l2 2 4-4"/></svg>
+          </div>
+          <h3>Proactive Managed IT</h3>
+          <p>24/7 monitoring and a certified team that resolves issues before they reach your desk.</p>
+          <div class="stat">
+            <div><b>1000+</b><span>Businesses Served</span></div>
+            <div><b>20+</b><span>Years</span></div>
+            <div><b>35+</b><span>Yrs Experience</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ ICONS ============ -->
+<section>
+  <div class="wrap">
+    <p class="label">05 — Iconography</p>
+    <h2 class="sec-title">Icon Language</h2>
+    <p class="sec-lead">Light, single-weight line icons (1.6px stroke, rounded joins) drawn in deep blue — matching the brand's clean, technical iconography.</p>
+    <div class="icons">
+      <div class="iconcell">
+        <svg viewBox="0 0 24 24"><path d="M12 3l7 3v5c0 4.4-3 8-7 10-4-2-7-5.6-7-10V6z"/><path d="M9 12l2 2 4-4"/></svg>
+        <span class="nm">Security</span>
+      </div>
+      <div class="iconcell">
+        <svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="6" rx="1.5"/><rect x="3" y="14" width="18" height="6" rx="1.5"/><path d="M7 7h.01M7 17h.01"/></svg>
+        <span class="nm">Servers</span>
+      </div>
+      <div class="iconcell">
+        <svg viewBox="0 0 24 24"><path d="M7 18a4 4 0 010-8 5.5 5.5 0 0110.6-1.4A4 4 0 0117 18z"/></svg>
+        <span class="nm">Cloud</span>
+      </div>
+      <div class="iconcell">
+        <svg viewBox="0 0 24 24"><circle cx="6" cy="6" r="2.2"/><circle cx="18" cy="6" r="2.2"/><circle cx="12" cy="18" r="2.2"/><path d="M7.6 7.6L11 16M16.4 7.6L13 16M8 6h8"/></svg>
+        <span class="nm">Network</span>
+      </div>
+      <div class="iconcell">
+        <svg viewBox="0 0 24 24"><path d="M4 12a8 8 0 0116 0"/><rect x="3" y="12" width="3.5" height="6" rx="1.2"/><rect x="17.5" y="12" width="3.5" height="6" rx="1.2"/><path d="M19 18v1a3 3 0 01-3 3h-3"/></svg>
+        <span class="nm">Support</span>
+      </div>
+      <div class="iconcell">
+        <svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="13" rx="1.5"/><path d="M8 20h8M12 17v3"/></svg>
+        <span class="nm">Workplace</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ WORDMARKS ============ -->
+<section>
+  <div class="wrap">
+    <p class="label">06 — Wordmarks</p>
+    <h2 class="sec-title">Wordmarks &amp; Lockups</h2>
+    <p class="sec-lead">The primary logo is fixed and never redrawn. These name treatments support it in tight or single-color contexts.</p>
+    <div class="wordmarks">
+      <div class="wm">
+        <div class="lockup"><img src="idn-logo.png" alt="IDN logo" style="height:34px"/></div>
+        <div class="mono">Primary lockup · full color</div>
+      </div>
+      <div class="wm">
+        <div class="lockup"><span class="word">IDN</span></div>
+        <div class="mono">Monogram · navy on light</div>
+      </div>
+      <div class="wm dark">
+        <div class="lockup"><span class="word">IDN<span class="lo" style="font-size:14px;letter-spacing:2px"> · Networks</span></span></div>
+        <div class="mono">Reversed · light surfaces over navy</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ FOOTER ============ -->
+<footer>
+  <div class="wrap foot-inner">
+    <span>Innovative Dynamic Networks · <b>Design System v1.0</b></span>
+    <span>design/design-system.html · companion: brand-book-a4.pdf</span>
+  </div>
+</footer>
+
+</body>
+</html>
