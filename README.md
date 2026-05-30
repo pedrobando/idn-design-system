@@ -1,77 +1,86 @@
-# Design System Toolkit
+# Innovative Dynamic Networks — Design System
 
-Give Claude a brand reference, get a complete design system page and a print-ready A4 brand book in one shot.
+A complete brand reference and print-ready brand book for **Innovative Dynamic Networks (IDN)** — a veteran-owned managed IT provider serving the Milwaukee and Chicago area for 20+ years.
 
-## What you get
+> **We Manage Your IT, So You Can Manage Your Business**
 
-1. **`design-system.html`** — a scrollable reference page covering colors, typography, principles, components, icons, and wordmarks.
-2. **`brand-book-a4.html` + `brand-book-a4.pdf`** — a single A4 portrait page fitting the brand topline onto one shareable poster.
+Extracted from [idn-wi.com](https://idn-wi.com/) — colors, fonts, principles, and logo all come from the live brand, nothing invented.
 
-Both outputs are self-contained HTML (Google Fonts CDN + inline CSS + inline SVG). No build step. The PDF is rendered via headless Edge/Chrome.
+## Deliverables
 
-**The toolkit has no opinions about fonts, colors, or themes.** Everything comes from the reference you give Claude — the extracted brand is what you get back.
+| File | What it is |
+|------|------------|
+| [`design/design-system.html`](design/design-system.html) | Scrollable reference page — color hierarchy, typography, principles, components, icons, wordmarks |
+| [`design/brand-book-a4.html`](design/brand-book-a4.html) | Single A4 portrait page (the brand topline at a glance) |
+| [`design/brand-book-a4.pdf`](design/brand-book-a4.pdf) | The rendered, print-ready brand book |
+| [`design/idn-logo.png`](design/idn-logo.png) | The official IDN logo (embedded as-is, never redrawn) |
 
-## Quick start
+Both HTML files are self-contained — Google Fonts CDN + inline CSS + inline SVG, no build step.
+
+## Brand at a glance
+
+### Color
+
+| Role | Name | Hex | Usage |
+|------|------|-----|-------|
+| Primary | IDN Blue | `#377FBF` | Links, buttons, the logo mark, key highlights |
+| Secondary | Deep Blue | `#26629C` | Hover states, gradients, dimensional depth |
+| Tertiary | Slate Navy | `#223645` | Headings, body text, dark surfaces |
+| Neutral | Ink | `#152938` | Deepest surfaces |
+| Neutral | Mist | `#B5C5D0` | Reversed text on navy, subtle accents |
+| Neutral | Gray | `#7A7A7A` | Secondary text |
+| Neutral | Cloud | `#F6F6F6` | Light backgrounds |
+
+### Typography
+
+- **Cabin** — display & body (humanist sans, calm and professional)
+- **Roboto Slab** — overlines, labels, and numeric callouts
+
+Both load free via Google Fonts.
+
+### Principles
+
+1. **Reliability** — proactive IT that prevents problems before they disrupt the business
+2. **Problem Solving** — 35+ years of combined experience behind every fix
+3. **One-Stop Shop** — comprehensive IT under one roof, one accountable team
+4. **Proven Quality** — 20+ years serving 1000+ businesses
+5. **Technical Expertise** — certified professionals across the full stack
+6. **Competitive Pricing** — scalable solutions sized to fit the business
+
+## Viewing
+
+Open either HTML file in any browser:
 
 ```bash
-git clone https://github.com/robonuggets/design-system
+open design/design-system.html
+open design/brand-book-a4.pdf
 ```
 
-Then in Claude Code, add this as a working directory (or drop the `.claude/skills/design-system/` folder into your project's `.claude/skills/`). Ask Claude:
+## Re-rendering the PDF
 
-> Make a design system and brand book from [site URL / screenshot / description]
+If you edit `brand-book-a4.html`, re-render with a headless browser.
 
-Claude will extract what it can, ask for any gaps, generate both files, and render the PDF.
+**macOS (Chrome):**
 
-## What's included
-
-```
-design-system/
-├── .claude/
-│   └── skills/
-│       └── design-system/
-│           ├── SKILL.md                       # The skill definition
-│           └── examples/
-│               └── template.html              # Structural skeleton with {{TOKENS}} to fill
-├── CLAUDE.md
-└── README.md
+```bash
+"/Applications/Google Chrome.app/Contents/MacOS/Google Chrome" \
+  --headless --disable-gpu --no-pdf-header-footer \
+  --print-to-pdf="design/brand-book-a4.pdf" \
+  "file://$PWD/design/brand-book-a4.html"
 ```
 
-## How it works
-
-1. You give Claude a reference (URL, screenshot, existing site, or brand description).
-2. Claude extracts colors, fonts, tagline, principles, and logo SVG.
-3. Claude confirms what was extracted and asks only for the gaps.
-4. Claude writes both HTML files into a `design/` folder.
-5. Claude renders `brand-book-a4.pdf` via headless Edge/Chrome.
-6. You iterate — restyle, fill empty space, swap wordmark treatments.
-
-## Example prompts
-
-```
-Make a design system and brand book for linear.app
-```
-
-```
-Here's a screenshot of my product. Extract the brand and build the design system + A4 brand book.
-```
-
-```
-My brand is "Acme" — primary #ff4444, secondary #666, fonts Inter + JetBrains Mono, tagline "Ship faster, break less". Build the assets.
-```
-
-## Rendering the PDF
-
-The skill walks Claude through rendering via headless browser. Manual command (Windows):
+**Windows (Edge):**
 
 ```bash
 "/c/Program Files (x86)/Microsoft/Edge/Application/msedge.exe" \
   --headless --disable-gpu --no-pdf-header-footer \
   --print-to-pdf="brand-book-a4.pdf" \
-  "file:///absolute/path/to/brand-book-a4.html"
+  "file:///absolute/path/to/design/brand-book-a4.html"
 ```
 
-macOS/Linux equivalents are in `SKILL.md`.
+## How it was built
+
+Generated with the [design-system toolkit](https://github.com/robonuggets/design-system) skill for Claude Code, which extracts a brand from any reference (URL, screenshot, or description) and produces both artifacts. The skill definition lives under `.claude/skills/design-system/` in this repo.
 
 ## License
 
